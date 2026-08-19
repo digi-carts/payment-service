@@ -1,5 +1,8 @@
 package com.digicart.payment.dto;
 
+/**
+ * Request/response DTO: Platform Payment Config Request.
+ */
 public class PlatformPaymentConfigRequest {
     private String razorpayKeyId;
     private String razorpayKeySecret;

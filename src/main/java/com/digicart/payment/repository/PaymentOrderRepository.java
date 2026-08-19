@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Spring Data JPA repository for payment order  persistence.
+ */
 @Repository
 public interface PaymentOrderRepository extends JpaRepository<PaymentOrder, String> {
     Optional<PaymentOrder> findByRazorpayOrderId(String razorpayOrderId);

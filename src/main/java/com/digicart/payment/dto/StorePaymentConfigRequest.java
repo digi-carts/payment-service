@@ -3,6 +3,9 @@ package com.digicart.payment.dto;
 import com.digicart.payment.entity.OnlineMode;
 import com.digicart.payment.entity.KycStatus;
 
+/**
+ * Request/response DTO: Store Payment Config Request.
+ */
 public class StorePaymentConfigRequest {
     private String storeId;
     private String razorpayKeyId;

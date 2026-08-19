@@ -4,6 +4,9 @@ import com.digicart.payment.entity.PaymentType;
 import com.digicart.payment.entity.PaymentStatus;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * Request/response DTO: Payment Order Request.
+ */
 public class PaymentOrderRequest {
     @NotNull
     private String razorpayOrderId;

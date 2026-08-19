@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Application service implementing platform payment config use cases for <em>payment-service</em>.
+ */
 @Service
 public class PlatformPaymentConfigService {
 

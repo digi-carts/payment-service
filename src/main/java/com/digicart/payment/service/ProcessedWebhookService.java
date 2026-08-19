@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Application service implementing processed webhook use cases for <em>payment-service</em>.
+ */
 @Service
 public class ProcessedWebhookService {
 

@@ -4,6 +4,9 @@ import com.digicart.payment.entity.PlatformPaymentConfig;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Spring Data JPA repository for platform payment config  persistence.
+ */
 @Repository
 public interface PlatformPaymentConfigRepository extends JpaRepository<PlatformPaymentConfig, String> {
 }

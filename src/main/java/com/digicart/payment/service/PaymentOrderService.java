@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Application service implementing payment order use cases for <em>payment-service</em>.
+ */
 @Service
 public class PaymentOrderService {
 

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * REST controller exposing processed webhook HTTP APIs for <em>payment-service</em>.
+ */
 @RestController
 @RequestMapping("/api/processed-webhooks")
 public class ProcessedWebhookController {

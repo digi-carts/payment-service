@@ -7,6 +7,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.Instant;
 import java.util.UUID;
 
+/**
+ * JPA entity mapped in this service schema (Store Payment Config).
+ */
 @Entity
 @Table(name = "store_payment_config", schema = "payment_svc")
 @EntityListeners(AuditingEntityListener.class)
