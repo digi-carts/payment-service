@@ -18,10 +18,22 @@ public class ProcessedWebhookController {
 
     private final ProcessedWebhookService service;
 
+    /**
+     * Creates a new {@code ProcessedWebhookController}.
+     *
+     * @param service service
+     */
     public ProcessedWebhookController(ProcessedWebhookService service) {
         this.service = service;
     }
 
+    /**
+     * Handles GET.
+     *
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @GetMapping
     public ResponseEntity<List<ProcessedWebhook>> findAll(
             @RequestHeader(value = "X-User-Id", required = false) String userId,
@@ -29,6 +41,14 @@ public class ProcessedWebhookController {
         return ResponseEntity.ok(service.findAll());
     }
 
+    /**
+     * Handles {@code GET /{id}}.
+     *
+     * @param id resource identifier
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @GetMapping("/{id}")
     public ResponseEntity<ProcessedWebhook> findById(
             @PathVariable String id,
@@ -37,6 +57,14 @@ public class ProcessedWebhookController {
         return ResponseEntity.ok(service.findById(id));
     }
 
+    /**
+     * Handles {@code GET /{id}/exists}.
+     *
+     * @param id resource identifier
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @GetMapping("/{id}/exists")
     public ResponseEntity<Map<String, Boolean>> existsById(
             @PathVariable String id,
@@ -45,6 +73,14 @@ public class ProcessedWebhookController {
         return ResponseEntity.ok(Map.of("exists", service.existsById(id)));
     }
 
+    /**
+     * Handles POST.
+     *
+     * @param request request payload
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @PostMapping
     public ResponseEntity<ProcessedWebhook> create(
             @RequestBody ProcessedWebhookRequest request,
@@ -53,6 +89,14 @@ public class ProcessedWebhookController {
         return ResponseEntity.ok(service.create(request));
     }
 
+    /**
+     * Handles {@code DELETE /{id}}.
+     *
+     * @param id resource identifier
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(
             @PathVariable String id,

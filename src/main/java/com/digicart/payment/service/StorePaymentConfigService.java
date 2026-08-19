@@ -16,36 +16,75 @@ public class StorePaymentConfigService {
 
     private final StorePaymentConfigRepository repository;
 
+    /**
+     * Creates a new {@code StorePaymentConfigService}.
+     *
+     * @param repository repository
+     */
     public StorePaymentConfigService(StorePaymentConfigRepository repository) {
         this.repository = repository;
     }
 
+    /**
+     * Finds all.
+     * @return matching records
+     */
     public List<StorePaymentConfig> findAll() {
         return repository.findAll();
     }
 
+    /**
+     * Finds by id.
+     *
+     * @param id resource identifier
+     * @return the store payment config
+     */
     public StorePaymentConfig findById(String id) {
         return repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("StorePaymentConfig not found with id: " + id));
     }
 
+    /**
+     * Finds by store id.
+     *
+     * @param storeId store (tenant) identifier
+     * @return the store payment config
+     */
     public StorePaymentConfig findByStoreId(String storeId) {
         return repository.findByStoreId(storeId)
                 .orElseThrow(() -> new EntityNotFoundException("StorePaymentConfig not found for storeId: " + storeId));
     }
 
+    /**
+     * Creates a new record.
+     *
+     * @param request request payload
+     * @return the store payment config
+     */
     public StorePaymentConfig create(StorePaymentConfigRequest request) {
         StorePaymentConfig config = new StorePaymentConfig();
         applyRequest(config, request);
         return repository.save(config);
     }
 
+    /**
+     * Updates an existing record.
+     *
+     * @param id resource identifier
+     * @param request request payload
+     * @return the store payment config
+     */
     public StorePaymentConfig update(String id, StorePaymentConfigRequest request) {
         StorePaymentConfig config = findById(id);
         applyRequest(config, request);
         return repository.save(config);
     }
 
+    /**
+     * Deletes the record.
+     *
+     * @param id resource identifier
+     */
     public void delete(String id) {
         findById(id);
         repository.deleteById(id);

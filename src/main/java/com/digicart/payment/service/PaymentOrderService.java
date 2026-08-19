@@ -17,48 +17,105 @@ public class PaymentOrderService {
 
     private final PaymentOrderRepository repository;
 
+    /**
+     * Creates a new {@code PaymentOrderService}.
+     *
+     * @param repository repository
+     */
     public PaymentOrderService(PaymentOrderRepository repository) {
         this.repository = repository;
     }
 
+    /**
+     * Finds all.
+     * @return matching records
+     */
     public List<PaymentOrder> findAll() {
         return repository.findAll();
     }
 
+    /**
+     * Finds by id.
+     *
+     * @param id resource identifier
+     * @return the payment order
+     */
     public PaymentOrder findById(String id) {
         return repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("PaymentOrder not found with id: " + id));
     }
 
+    /**
+     * Finds by razorpay order id.
+     *
+     * @param razorpayOrderId Razorpay order id
+     * @return the payment order
+     */
     public PaymentOrder findByRazorpayOrderId(String razorpayOrderId) {
         return repository.findByRazorpayOrderId(razorpayOrderId)
                 .orElseThrow(() -> new EntityNotFoundException("PaymentOrder not found with razorpayOrderId: " + razorpayOrderId));
     }
 
+    /**
+     * Finds by store id.
+     *
+     * @param storeId store (tenant) identifier
+     * @return matching records
+     */
     public List<PaymentOrder> findByStoreId(String storeId) {
         return repository.findByStoreId(storeId);
     }
 
+    /**
+     * Finds by user id.
+     *
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @return matching records
+     */
     public List<PaymentOrder> findByUserId(String userId) {
         return repository.findByUserId(userId);
     }
 
+    /**
+     * Finds by status.
+     *
+     * @param status status
+     * @return matching records
+     */
     public List<PaymentOrder> findByStatus(PaymentStatus status) {
         return repository.findByStatus(status);
     }
 
+    /**
+     * Creates a new record.
+     *
+     * @param request request payload
+     * @return the payment order
+     */
     public PaymentOrder create(PaymentOrderRequest request) {
         PaymentOrder order = new PaymentOrder();
         applyRequest(order, request);
         return repository.save(order);
     }
 
+    /**
+     * Updates an existing record.
+     *
+     * @param id resource identifier
+     * @param request request payload
+     * @return the payment order
+     */
     public PaymentOrder update(String id, PaymentOrderRequest request) {
         PaymentOrder order = findById(id);
         applyRequest(order, request);
         return repository.save(order);
     }
 
+    /**
+     * Deletes the record.
+     *
+     * @param id resource identifier
+     */
     public void delete(String id) {
         findById(id);
         repository.deleteById(id);

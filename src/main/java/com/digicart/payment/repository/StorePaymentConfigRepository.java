@@ -11,5 +11,11 @@ import java.util.Optional;
  */
 @Repository
 public interface StorePaymentConfigRepository extends JpaRepository<StorePaymentConfig, String> {
+    /**
+     * Finds by store id.
+     *
+     * @param storeId store (tenant) identifier
+     * @return the value if present
+     */
     Optional<StorePaymentConfig> findByStoreId(String storeId);
 }

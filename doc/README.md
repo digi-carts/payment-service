@@ -80,3 +80,7 @@ mvn spring-boot:run
 - [order-service](https://github.com/digi-carts/order-service/blob/stage/doc/README.md)
 - [platform-service](https://github.com/digi-carts/platform-service/blob/stage/doc/README.md)
 - [api-gateway](https://github.com/digi-carts/api-gateway/blob/stage/doc/README.md)
+
+## REST API reference
+
+See [api.md](api.md) for every HTTP endpoint generated from Spring controllers.
