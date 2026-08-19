@@ -13,7 +13,7 @@ import java.util.Map;
  * REST controller exposing processed webhook HTTP APIs for <em>payment-service</em>.
  */
 @RestController
-@RequestMapping("/api/processed-webhooks")
+@RequestMapping("/api/webhooks")
 public class ProcessedWebhookController {
 
     private final ProcessedWebhookService service;
