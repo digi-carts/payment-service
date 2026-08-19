@@ -17,10 +17,22 @@ public class StorePaymentConfigController {
 
     private final StorePaymentConfigService service;
 
+    /**
+     * Creates a new {@code StorePaymentConfigController}.
+     *
+     * @param service service
+     */
     public StorePaymentConfigController(StorePaymentConfigService service) {
         this.service = service;
     }
 
+    /**
+     * Handles GET.
+     *
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @GetMapping
     public ResponseEntity<List<StorePaymentConfig>> findAll(
             @RequestHeader(value = "X-User-Id", required = false) String userId,
@@ -28,6 +40,14 @@ public class StorePaymentConfigController {
         return ResponseEntity.ok(service.findAll());
     }
 
+    /**
+     * Handles {@code GET /{id}}.
+     *
+     * @param id resource identifier
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @GetMapping("/{id}")
     public ResponseEntity<StorePaymentConfig> findById(
             @PathVariable String id,
@@ -36,6 +56,14 @@ public class StorePaymentConfigController {
         return ResponseEntity.ok(service.findById(id));
     }
 
+    /**
+     * Handles {@code GET /store/{storeId}}.
+     *
+     * @param storeId store (tenant) identifier
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @GetMapping("/store/{storeId}")
     public ResponseEntity<StorePaymentConfig> findByStoreId(
             @PathVariable String storeId,
@@ -44,6 +72,14 @@ public class StorePaymentConfigController {
         return ResponseEntity.ok(service.findByStoreId(storeId));
     }
 
+    /**
+     * Handles POST.
+     *
+     * @param request request payload
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @PostMapping
     public ResponseEntity<StorePaymentConfig> create(
             @RequestBody StorePaymentConfigRequest request,
@@ -52,6 +88,15 @@ public class StorePaymentConfigController {
         return ResponseEntity.ok(service.create(request));
     }
 
+    /**
+     * Handles {@code PUT /{id}}.
+     *
+     * @param id resource identifier
+     * @param request request payload
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @PutMapping("/{id}")
     public ResponseEntity<StorePaymentConfig> update(
             @PathVariable String id,
@@ -61,6 +106,14 @@ public class StorePaymentConfigController {
         return ResponseEntity.ok(service.update(id, request));
     }
 
+    /**
+     * Handles {@code DELETE /{id}}.
+     *
+     * @param id resource identifier
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param userRole caller role from the gateway ({@code X-User-Role})
+     * @return HTTP response
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(
             @PathVariable String id,
