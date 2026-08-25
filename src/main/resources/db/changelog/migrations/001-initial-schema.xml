@@ -116,4 +116,13 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="006-seed-global-platform-payment-config" author="digi-carts">
+        <insert tableName="platform_payment_config" schemaName="payment_svc">
+            <column name="id" value="global"/>
+            <column name="enabled" valueBoolean="false"/>
+            <column name="route_enabled" valueBoolean="false"/>
+            <column name="default_platform_fee_percent" valueNumeric="0"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

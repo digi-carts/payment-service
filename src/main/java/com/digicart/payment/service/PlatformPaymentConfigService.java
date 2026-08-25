@@ -7,7 +7,6 @@ import com.digicart.payment.repository.PlatformPaymentConfigRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Application service implementing platform payment config use cases for <em>payment-service</em>.
@@ -31,8 +30,10 @@ public class PlatformPaymentConfigService {
     }
 
     public PlatformPaymentConfig getGlobal() {
-        return repository.findById("global")
-                .orElseThrow(() -> new EntityNotFoundException("Global PlatformPaymentConfig not found"));
+        return repository.findById("global").orElseGet(() -> {
+            PlatformPaymentConfig defaults = new PlatformPaymentConfig();
+            return repository.save(defaults);
+        });
     }
 
     public PlatformPaymentConfig create(PlatformPaymentConfigRequest request) {
