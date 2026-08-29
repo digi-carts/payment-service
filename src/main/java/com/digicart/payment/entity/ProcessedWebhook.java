@@ -6,6 +6,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
+/**
+ * JPA entity mapped in this service schema (Processed Webhook).
+ */
 @Entity
 @Table(name = "processed_webhook", schema = "payment_svc")
 @EntityListeners(AuditingEntityListener.class)

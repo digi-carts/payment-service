@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller exposing platform payment config HTTP APIs for <em>payment-service</em>.
+ */
 @RestController
 @RequestMapping("/api/platform-payment-config")
 public class PlatformPaymentConfigController {

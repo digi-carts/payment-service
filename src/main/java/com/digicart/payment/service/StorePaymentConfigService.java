@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Application service implementing store payment config use cases for <em>payment-service</em>.
+ */
 @Service
 public class StorePaymentConfigService {
 

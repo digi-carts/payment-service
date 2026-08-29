@@ -1,5 +1,8 @@
 package com.digicart.payment.dto;
 
+/**
+ * Request/response DTO: Processed Webhook Request.
+ */
 public class ProcessedWebhookRequest {
     private String id;
     private String eventType;

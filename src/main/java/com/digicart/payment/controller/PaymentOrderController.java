@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller exposing payment order HTTP APIs for <em>payment-service</em>.
+ */
 @RestController
-@RequestMapping("/api/payment-orders")
+@RequestMapping("/api/payments")
 public class PaymentOrderController {
 
     private final PaymentOrderService service;
